@@ -37,6 +37,7 @@ public class School {
             Student student = new Student( "Student "+i, mathScore, germanScore);
             studentsList.add(student);
         }
+        System.out.println("Butun ogrencilerin Listesi:");
         return studentsList;
     }
     // Ogrenci bilgilerini ekrana yazdiran method.
