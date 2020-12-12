@@ -8,7 +8,6 @@ public class School {
         School.renderArray(studentList);
         float averageList[]= School.averageStudentNote(studentList);
         School.renderAverageNote(averageList);
-        //School.findMaxMinMathNote(studentList);
         ArrayList<Student> successMathStudentsList = School.successMathStudentsData(studentList,averageList[0]);
         School.renderArray(successMathStudentsList);
         ArrayList<Student> unsuccessMathStudentsList = School.unsuccessMathStudentsData(studentList,averageList[0]);
@@ -17,7 +16,14 @@ public class School {
         School.renderArray(successGermanStudentsList);
         ArrayList<Student> unsuccessGermanStudentsList = School.unsuccessGermanStudentsData(studentList,averageList[1]);
         School.renderArray(unsuccessGermanStudentsList);
-
+        ArrayList<Student> mostSuccessStudentsList= School.findMaxMathNote(studentList);
+        School.renderArray(mostSuccessStudentsList);
+        ArrayList<Student> minMathNoteStudentsList= School.findMinMathNote(studentList);
+        School.renderArray(minMathNoteStudentsList);
+        ArrayList<Student> mostSuccessGermanStudentsList= School.findMaxGermanNote(studentList);
+        School.renderArray(mostSuccessGermanStudentsList);
+        ArrayList<Student> minGermanNoteStudentsList= School.findMinGermanNote(studentList);
+        School.renderArray(minGermanNoteStudentsList);
 
     }
 // ogrenci bilgilerini olusturan ve diziye ekleyen method.
@@ -60,21 +66,81 @@ public class School {
         System.out.println("Average German Grades: "+pArray[1]);
 
     }
-    // en yuksek ve en dusuk alan ogrencileri bulan method
-    public static void  findMaxMinMathNote(ArrayList<Student> pStudentList){
+    // en yuksek matematik notu alan ogrencileri bulan method
+    public static ArrayList<Student>  findMaxMathNote(ArrayList<Student> pStudentList){
+        ArrayList<Student>mostSuccessStudentsList = new ArrayList<Student>();
         int maxNote=pStudentList.get(0).mathNote;
+        for(Student student:pStudentList)
+        {
+            if(student.mathNote>maxNote){
+               maxNote=student.mathNote;
+           }
+        }
+        for(Student student:pStudentList){
+            if(student.mathNote==maxNote){
+                mostSuccessStudentsList.add(student);
+            }
+        }
+        System.out.println("Matematikten enyuksek Not: "+maxNote);
+        System.out.println("Matematikten enyuksek Notu alan ogrenciler");
+        return mostSuccessStudentsList;
+    }
+    // en dusuk matematik notu alan ogrencileri bulan method
+    public static ArrayList<Student>  findMinMathNote(ArrayList<Student> pStudentList){
+        ArrayList<Student>minMathNoteStudentsList = new ArrayList<Student>();
         int minNote=pStudentList.get(0).mathNote;
         for(Student student:pStudentList)
         {
-           if(student.mathNote>maxNote){
-               maxNote=student.mathNote;
-           }
-           if(student.mathNote<minNote){
-               minNote=student.mathNote;
-           }
+            if(student.mathNote<minNote){
+                minNote=student.mathNote;
+            }
         }
-        System.out.println(maxNote);
-        System.out.println(minNote);
+        for(Student student:pStudentList){
+            if(student.mathNote==minNote){
+                minMathNoteStudentsList.add(student);
+            }
+        }
+        System.out.println("Matematikten endusuk Not: "+minNote);
+        System.out.println("Matematikten endusuk Notu alan ogrenciler");
+        return minMathNoteStudentsList;
+    }
+    // en yuksek almanca notu alan ogrencileri bulan method
+    public static ArrayList<Student>  findMaxGermanNote(ArrayList<Student> pStudentList){
+        ArrayList<Student>mostSuccessGermanStudentsList = new ArrayList<Student>();
+        int maxNote=pStudentList.get(0).germanNote;
+        for(Student student:pStudentList)
+        {
+            if(student.germanNote>maxNote){
+                maxNote=student.germanNote;
+            }
+        }
+        for(Student student:pStudentList){
+            if(student.germanNote==maxNote){
+                mostSuccessGermanStudentsList.add(student);
+            }
+        }
+        System.out.println("Almanca enyuksek Not: "+maxNote);
+        System.out.println("Almancadan enyuksek Notu alan ogrenciler");
+        return mostSuccessGermanStudentsList;
+    }
+    // en dusuk Almanca notu alan ogrencileri bulan method
+    public static ArrayList<Student>  findMinGermanNote(ArrayList<Student> pStudentList){
+        ArrayList<Student>minGermanNoteStudentsList = new ArrayList<Student>();
+        int minNote=pStudentList.get(0).germanNote;
+        for(Student student:pStudentList)
+        {
+            if(student.germanNote<minNote){
+                minNote=student.germanNote;
+            }
+        }
+        for(Student student:pStudentList){
+            if(student.germanNote==minNote){
+                minGermanNoteStudentsList.add(student);
+            }
+        }
+        System.out.println("Almancada en dusuk Not: "+minNote);
+        System.out.println("Almancadan en dusuk Notu alan ogrenciler");
+        return minGermanNoteStudentsList;
     }
     //Matamatikten gecen ogrenciler
     public static ArrayList<Student> successMathStudentsData(ArrayList<Student> pStudentList, float pAverage){
