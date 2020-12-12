@@ -4,25 +4,45 @@ import java.util.*;
 
 public class School {
     public static void main(String[] args) {
+        // Random sayida bir dizi olusturyoruz.
         ArrayList<Student> studentList = School.loadStudentsData();
+        // olusturulan yeni dizi ekrana yazdiriliyor.
         School.renderArray(studentList);
+        // Almanca ve Matematik notlarinin ortalamasi bulunup yeni bir diziye yazdirildi.
         float averageList[]= School.averageStudentNote(studentList);
+        //Ortalamalar ekrana yazdirildi.
         School.renderAverageNote(averageList);
+        //Daha onceki metotta bulunan Ortalama math.notu ve arraylist parametre olarak verilerek ortalmanin ustunde olan ogrencilerden yeni bir arraylist olusturdu.
         ArrayList<Student> successMathStudentsList = School.successMathStudentsData(studentList,averageList[0]);
+        //Arraylist ekrana yazdirildi.
         School.renderArray(successMathStudentsList);
+        //Daha onceki metotta bulunan Ortalama math.notu ve arraylist parametre olarak verilerek ortalmanin altinda kalan ogrencilerden yeni bir arraylist olusturdu.
         ArrayList<Student> unsuccessMathStudentsList = School.unsuccessMathStudentsData(studentList,averageList[0]);
+        //Arraylist ekrana yazdirildi.
         School.renderArray(unsuccessMathStudentsList);
+        //Daha onceki metotta bulunan Ortalama german.notu ve arraylist parametre olarak verilerek ortalmanin ustunde olan ogrencilerden yeni bir arraylist olusturdu.
         ArrayList<Student> successGermanStudentsList = School.successGermanStudentsData(studentList,averageList[1]);
+        //Arraylist ekrana yazdirildi.
         School.renderArray(successGermanStudentsList);
+        //Daha onceki metotta bulunan Ortalama german.notu ve arraylist parametre olarak verilerek ortalmanin altinda kalan ogrencilerden yeni bir arraylist olusturdu.
         ArrayList<Student> unsuccessGermanStudentsList = School.unsuccessGermanStudentsData(studentList,averageList[1]);
+        //Arraylist ekrana yazdirildi.
         School.renderArray(unsuccessGermanStudentsList);
+        //Matematikten enyuksek not alan ogrencilerin bulunmasi ve yeni bir arrayliste atilmasi
         ArrayList<Student> mostSuccessStudentsList= School.findMaxMathNote(studentList);
+        //Arraylist ekrana yazdirildi.
         School.renderArray(mostSuccessStudentsList);
+        //Matematikten en dusuk not alan ogrencilerin bulunmasi ve yeni bir arrayliste atilmasi
         ArrayList<Student> minMathNoteStudentsList= School.findMinMathNote(studentList);
+        //Arraylist ekrana yazdirildi.
         School.renderArray(minMathNoteStudentsList);
+        //Almancadan enyuksek not alan ogrencilerin bulunmasi ve yeni bir arrayliste atilmasi
         ArrayList<Student> mostSuccessGermanStudentsList= School.findMaxGermanNote(studentList);
+        //Arraylist ekrana yazdirildi.
         School.renderArray(mostSuccessGermanStudentsList);
+        //Almancadan en dusuk not alan ogrencilerin bulunmasi ve yeni bir arrayliste atilmasi
         ArrayList<Student> minGermanNoteStudentsList= School.findMinGermanNote(studentList);
+        //Arraylist ekrana yazdirildi.
         School.renderArray(minGermanNoteStudentsList);
 
     }
@@ -67,7 +87,9 @@ public class School {
         System.out.println("Average German Grades: "+pArray[1]);
 
     }
-    // en yuksek matematik notu alan ogrencileri bulan method
+    /*en yuksek matematik notu alan ogrencileri bulan method
+    * oncelikle en yukek not tespit edildi. Daha sonra bu notu olan ogrencilerden yeni bir dizi olusturuldu.
+    */
     public static ArrayList<Student>  findMaxMathNote(ArrayList<Student> pStudentList){
         ArrayList<Student>mostSuccessStudentsList = new ArrayList<Student>();
         int maxNote=pStudentList.get(0).mathNote;
@@ -86,7 +108,9 @@ public class School {
         System.out.println("Matematikten enyuksek Notu alan ogrenciler");
         return mostSuccessStudentsList;
     }
-    // en dusuk matematik notu alan ogrencileri bulan method
+    /*en dusuk matematik notu alan ogrencileri bulan method
+     * oncelikle en dusuk not tespit edildi. Daha sonra bu notu olan ogrencilerden yeni bir dizi olusturuldu.
+     */
     public static ArrayList<Student>  findMinMathNote(ArrayList<Student> pStudentList){
         ArrayList<Student>minMathNoteStudentsList = new ArrayList<Student>();
         int minNote=pStudentList.get(0).mathNote;
@@ -105,7 +129,9 @@ public class School {
         System.out.println("Matematikten endusuk Notu alan ogrenciler");
         return minMathNoteStudentsList;
     }
-    // en yuksek almanca notu alan ogrencileri bulan method
+    /*en yuksek Almanca notu alan ogrencileri bulan method
+     * oncelikle en yukek not tespit edildi. Daha sonra bu notu olan ogrencilerden yeni bir dizi olusturuldu.
+     */
     public static ArrayList<Student>  findMaxGermanNote(ArrayList<Student> pStudentList){
         ArrayList<Student>mostSuccessGermanStudentsList = new ArrayList<Student>();
         int maxNote=pStudentList.get(0).germanNote;
@@ -124,7 +150,9 @@ public class School {
         System.out.println("Almancadan enyuksek Notu alan ogrenciler");
         return mostSuccessGermanStudentsList;
     }
-    // en dusuk Almanca notu alan ogrencileri bulan method
+    /*en dusuk Almanca notu alan ogrencileri bulan method
+     * oncelikle en dusuk not tespit edildi. Daha sonra bu notu olan ogrencilerden yeni bir dizi olusturuldu.
+     * */
     public static ArrayList<Student>  findMinGermanNote(ArrayList<Student> pStudentList){
         ArrayList<Student>minGermanNoteStudentsList = new ArrayList<Student>();
         int minNote=pStudentList.get(0).germanNote;

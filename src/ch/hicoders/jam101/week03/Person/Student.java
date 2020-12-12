@@ -1,5 +1,4 @@
 package ch.hicoders.jam101.week03.Person;
-
 public class Student {
     public String studentName;
     public int mathNote;
@@ -9,6 +8,5 @@ public class Student {
         this.studentName=pStudentName;
         this.mathNote=pMathNote;
         this.germanNote=pGermanNote;
-
     }
 }
