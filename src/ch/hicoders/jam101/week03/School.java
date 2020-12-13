@@ -6,7 +6,7 @@ public class School {
     public static void main(String[] args) {
         ArrayList<Student> studentList = School.loadStudentsData();
         School.renderArray(studentList);
-        float averageList[]= School.averageStudentNote(studentList);
+        double averageList[]= School.averageStudentNote(studentList);
         School.renderAverageNote(averageList);
         ArrayList<Student> successMathStudentsList = School.successMathStudentsData(studentList,averageList[0]);
         School.renderArray(successMathStudentsList);
@@ -27,7 +27,7 @@ public class School {
 
     }
 // ogrenci bilgilerini olusturan ve diziye ekleyen method.
-    public static ArrayList<Student> loadStudentsData(){
+    private static ArrayList<Student> loadStudentsData(){
         Random randomNumber = new Random();
         int studentsNumber = randomNumber.nextInt(50);
         ArrayList<Student> studentsList = new ArrayList<Student>(studentsNumber);
@@ -41,28 +41,28 @@ public class School {
         return studentsList;
     }
     // Ogrenci bilgilerini ekrana yazdiran method.
-    public static void renderArray(ArrayList<Student> pStudentList){
+    private static void renderArray(ArrayList<Student> pStudentList){
         for(Student student:pStudentList)
         {
             System.out.println(student.studentName + " " + "Maths note : " + student.mathNote + " " + " German Note : " + student.germanNote);
         }
     }
     // ögrencilerin not ortalmasini bulan method
-    public static float[] averageStudentNote(ArrayList<Student> pStudentList){
-        float totalMathNote=0;
-        float totalGermanNote=0;
+    private static double[] averageStudentNote(ArrayList<Student> pStudentList){
+        double totalMathNote=0;
+        double totalGermanNote=0;
         for(Student student:pStudentList)
         {
            totalMathNote+=student.mathNote;
            totalGermanNote+=student.germanNote;
         }
-        float averageMathNote=totalMathNote/pStudentList.size();
-        float averageGermanNote=totalGermanNote/pStudentList.size();
-        return  new float[] {averageMathNote, averageGermanNote};
+        double averageMathNote=totalMathNote/pStudentList.size();
+        double averageGermanNote=totalGermanNote/pStudentList.size();
+        return  new double[] {averageMathNote, averageGermanNote};
 
     }
     // ogrencilerin not ortalamsini ekrana yazdiran method
-    public static void renderAverageNote(float[] pArray){
+    private static void renderAverageNote(double[] pArray){
         System.out.println("average Math grades:"+pArray[0]);
         System.out.println("Average German Grades: "+pArray[1]);
 
@@ -70,7 +70,7 @@ public class School {
     /*en yuksek matematik notu alan ogrencileri bulan method
     * oncelikle en yukek not tespit edildi. Daha sonra bu notu olan ogrencilerden yeni bir dizi olusturuldu.
     */
-    public static ArrayList<Student>  findMaxMathNote(ArrayList<Student> pStudentList){
+    private static ArrayList<Student>  findMaxMathNote(ArrayList<Student> pStudentList){
         ArrayList<Student>mostSuccessStudentsList = new ArrayList<Student>();
         int maxNote=pStudentList.get(0).mathNote;
         for(Student student:pStudentList)
@@ -91,7 +91,7 @@ public class School {
     /*en dusuk matematik notu alan ogrencileri bulan method
      * oncelikle en dusuk not tespit edildi. Daha sonra bu notu olan ogrencilerden yeni bir dizi olusturuldu.
      */
-    public static ArrayList<Student>  findMinMathNote(ArrayList<Student> pStudentList){
+    private static ArrayList<Student>  findMinMathNote(ArrayList<Student> pStudentList){
         ArrayList<Student>minMathNoteStudentsList = new ArrayList<Student>();
         int minNote=pStudentList.get(0).mathNote;
         for(Student student:pStudentList)
@@ -112,7 +112,7 @@ public class School {
     /*en yuksek Almanca notu alan ogrencileri bulan method
      * oncelikle en yukek not tespit edildi. Daha sonra bu notu olan ogrencilerden yeni bir dizi olusturuldu.
      */
-    public static ArrayList<Student>  findMaxGermanNote(ArrayList<Student> pStudentList){
+    private static ArrayList<Student>  findMaxGermanNote(ArrayList<Student> pStudentList){
         ArrayList<Student>mostSuccessGermanStudentsList = new ArrayList<Student>();
         int maxNote=pStudentList.get(0).germanNote;
         for(Student student:pStudentList)
@@ -133,7 +133,7 @@ public class School {
     /*en dusuk Almanca notu alan ogrencileri bulan method
      * oncelikle en dusuk not tespit edildi. Daha sonra bu notu olan ogrencilerden yeni bir dizi olusturuldu.
      * */
-    public static ArrayList<Student>  findMinGermanNote(ArrayList<Student> pStudentList){
+    private static ArrayList<Student>  findMinGermanNote(ArrayList<Student> pStudentList){
         ArrayList<Student>minGermanNoteStudentsList = new ArrayList<Student>();
         int minNote=pStudentList.get(0).germanNote;
         for(Student student:pStudentList)
@@ -152,7 +152,7 @@ public class School {
         return minGermanNoteStudentsList;
     }
     //Matamatikten gecen ogrenciler
-    public static ArrayList<Student> successMathStudentsData(ArrayList<Student> pStudentList, float pAverage){
+    private static ArrayList<Student> successMathStudentsData(ArrayList<Student> pStudentList,double pAverage){
         ArrayList<Student>successStudentsList = new ArrayList<Student>();
         for(Student student:pStudentList){
            if(student.mathNote>=pAverage){
@@ -164,7 +164,7 @@ public class School {
         return successStudentsList;
     }
     //Matamatikten kalan ogrenciler
-    public static ArrayList<Student> unsuccessMathStudentsData(ArrayList<Student> pStudentList, float pAverage){
+    private static ArrayList<Student> unsuccessMathStudentsData(ArrayList<Student> pStudentList,double pAverage){
         ArrayList<Student>unsuccessStudentsList = new ArrayList<Student>();
         for(Student student:pStudentList){
             if(student.mathNote<pAverage){
@@ -177,7 +177,7 @@ public class School {
     }
     //Almancadan gecen ogrenciler
 
-    public static ArrayList<Student> successGermanStudentsData(ArrayList<Student> pStudentList, float pAverage){
+    private static ArrayList<Student> successGermanStudentsData(ArrayList<Student> pStudentList,double pAverage){
         ArrayList<Student> successGermanStudentList = new ArrayList<Student>();
         for(Student student:pStudentList){
             if(student.germanNote>=pAverage){
@@ -190,7 +190,7 @@ public class School {
     }
     //Almancadan kalan ogrenciler
 
-    public static ArrayList<Student> unsuccessGermanStudentsData(ArrayList<Student> pStudentList, float pAverage){
+    private static ArrayList<Student> unsuccessGermanStudentsData(ArrayList<Student> pStudentList,double pAverage){
         ArrayList<Student> unsuccessGermanStudentList = new ArrayList<Student>();
         for(Student student:pStudentList){
             if(student.germanNote<pAverage){
