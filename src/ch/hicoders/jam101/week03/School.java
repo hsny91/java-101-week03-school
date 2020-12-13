@@ -4,45 +4,25 @@ import java.util.*;
 
 public class School {
     public static void main(String[] args) {
-        // Random sayida bir dizi olusturyoruz.
         ArrayList<Student> studentList = School.loadStudentsData();
-        // olusturulan yeni dizi ekrana yazdiriliyor.
         School.renderArray(studentList);
-        // Almanca ve Matematik notlarinin ortalamasi bulunup yeni bir diziye yazdirildi.
         float averageList[]= School.averageStudentNote(studentList);
-        //Ortalamalar ekrana yazdirildi.
         School.renderAverageNote(averageList);
-        //Daha onceki metotta bulunan Ortalama math.notu ve arraylist parametre olarak verilerek ortalmanin ustunde olan ogrencilerden yeni bir arraylist olusturdu.
         ArrayList<Student> successMathStudentsList = School.successMathStudentsData(studentList,averageList[0]);
-        //Arraylist ekrana yazdirildi.
         School.renderArray(successMathStudentsList);
-        //Daha onceki metotta bulunan Ortalama math.notu ve arraylist parametre olarak verilerek ortalmanin altinda kalan ogrencilerden yeni bir arraylist olusturdu.
         ArrayList<Student> unsuccessMathStudentsList = School.unsuccessMathStudentsData(studentList,averageList[0]);
-        //Arraylist ekrana yazdirildi.
         School.renderArray(unsuccessMathStudentsList);
-        //Daha onceki metotta bulunan Ortalama german.notu ve arraylist parametre olarak verilerek ortalmanin ustunde olan ogrencilerden yeni bir arraylist olusturdu.
         ArrayList<Student> successGermanStudentsList = School.successGermanStudentsData(studentList,averageList[1]);
-        //Arraylist ekrana yazdirildi.
         School.renderArray(successGermanStudentsList);
-        //Daha onceki metotta bulunan Ortalama german.notu ve arraylist parametre olarak verilerek ortalmanin altinda kalan ogrencilerden yeni bir arraylist olusturdu.
         ArrayList<Student> unsuccessGermanStudentsList = School.unsuccessGermanStudentsData(studentList,averageList[1]);
-        //Arraylist ekrana yazdirildi.
         School.renderArray(unsuccessGermanStudentsList);
-        //Matematikten enyuksek not alan ogrencilerin bulunmasi ve yeni bir arrayliste atilmasi
         ArrayList<Student> mostSuccessStudentsList= School.findMaxMathNote(studentList);
-        //Arraylist ekrana yazdirildi.
         School.renderArray(mostSuccessStudentsList);
-        //Matematikten en dusuk not alan ogrencilerin bulunmasi ve yeni bir arrayliste atilmasi
         ArrayList<Student> minMathNoteStudentsList= School.findMinMathNote(studentList);
-        //Arraylist ekrana yazdirildi.
         School.renderArray(minMathNoteStudentsList);
-        //Almancadan enyuksek not alan ogrencilerin bulunmasi ve yeni bir arrayliste atilmasi
         ArrayList<Student> mostSuccessGermanStudentsList= School.findMaxGermanNote(studentList);
-        //Arraylist ekrana yazdirildi.
         School.renderArray(mostSuccessGermanStudentsList);
-        //Almancadan en dusuk not alan ogrencilerin bulunmasi ve yeni bir arrayliste atilmasi
         ArrayList<Student> minGermanNoteStudentsList= School.findMinGermanNote(studentList);
-        //Arraylist ekrana yazdirildi.
         School.renderArray(minGermanNoteStudentsList);
 
     }
